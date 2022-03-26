@@ -1,0 +1,53 @@
+<h3>スケジュール一覧</h3>
+
+<!--フラッシュメッセージを表示する-->
+<% if flash[:notice]%>
+    <p class = "notice"><%= flash[:notice] %></p>
+<% end %>
+
+<!--テーブルの作成-->
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>開始日</th>
+            <th>終了日</th>
+            <th>終日</th>
+            <th>スケジュール<br>更新日時</th>
+            <th>確認</th>
+            <th>編集</th>
+            <th>削除</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        <% @users.each do |user| %> <!--each 複数のデータに対して同じ処理を繰り返される-->
+            <tr>
+                <td><%= user.id %></td>
+                <td><%= user.title %></td>
+                <td><%= user.first_day %></td>
+                <td><%= user.last_day %></td>
+                <td>
+                    <% if user.last_check == true %>
+                    ○
+                    <% else user.last_check == false %>
+                    ×
+                    <% end %>
+                </td>
+                <td><%= user.updated_at.to_s(:datetime_jp) %></td>
+                <td>
+                    <%= link_to"確認", user %>
+                </td>
+                <td>
+                    <%= link_to"編集",[:edit,user] %>
+                </td>
+                <td>
+                    <%= link_to "削除", user, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+                </td>
+            </tr>
+        <% end %>    
+    </tbody>
+</table>
+
+<p1><%= link_to"ユーザー新規登録",:new_user %></p1>

@@ -11,6 +11,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <h1>Ruby on Rails スケジュール管理アプリ</h1>
+    </header>
+    <%= yield %> <!--他のアクション名.html.erbファイルを読み込んでくれる-->
+    <footer>
+      <p>現在の時間: <%= Time.current.to_s(:datetime_jp) %></p>
+      <p>スケジュール合計:<%= User.count %>個</p>
+    </footer>
   </body>
 </html>
+
