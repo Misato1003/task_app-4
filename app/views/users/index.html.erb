@@ -29,9 +29,9 @@
                 <td><%= user.first_day %></td>
                 <td><%= user.last_day %></td>
                 <td>
-                    <% if user.last_check == true %>
+                    <% if user.last_check %>
                     ○
-                    <% else user.last_check == false %>
+                    <% else user.last_check %>
                     ×
                     <% end %>
                 </td>
