@@ -1,0 +1,42 @@
+<h3>スケジュール新規作成</h3>
+
+<!--バリエーションのエラーメッセージ-->
+<%= render "shared/error", obj: @user %>
+
+<%= form_with model: @user do |f| %> <!--フォームを作成する-->
+    <table>
+        <tr>
+            <th><%= f.label :title,"タイトル" %></th>
+            <td><%= f.text_field :title %></td>
+        </tr>
+        
+        <tr>
+            <th><%= f.label :title,"開始日" %></th>
+            <td><%= f.date_field :first_day %></td>
+        </tr>
+        
+        <tr>
+            <th><%= f.label :title,"終了日" %></th>
+            <td><%= f.date_field :last_day %></td>
+        </tr>
+        
+        <tr>
+            <th><%= f.label :last_check,"終日" %></th>
+            <td><%= f.check_box:last_check ,{} %><p1>終日の場合は、チェックを入れる</p1></td>
+        </tr>
+        
+        <tr>
+            <th><%= f.label :memo,"スケジュールメモ" %></th>
+            <td><%= f.text_area :memo %> </td>
+        </tr>
+    </table>
+    
+    <div>
+        <ul>
+            <li><%= f.submit"スケジュールを新規登録する" %></li><!--フォームの送信ボタン-->
+            <li><%= link_to"スケジュール一覧に戻る", :users %></li> <!--リンク-->
+        </ul>
+    </div>
+<% end %>
+
+
